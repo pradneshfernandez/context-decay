@@ -1,0 +1,11 @@
+model,constraint,padding_condition,constraint_position,padding_level,prompt_tokens,trial,seed,success,time_taken,query,output_snippet,experiment_version
+llama3.2:3b,uppercase,prose,before,32,1893,0,1000,1,47.95,What is the capital of France?,PARIS IS THE CAPITAL OF FRANCE.,v1
+llama3.2:3b,uppercase,prose,before,32,1892,1,1001,1,49.45,Name one planet in our solar system.,MARS IS THE PLANET IN OUR SOLAR SYSTEM THAT IS KNOWN FOR ITS RED COLOR AND HAS THE THINEST ATMOSPHERE AMONG ALL THE PLANETS.,v1
+llama3.2:3b,uppercase,prose,before,64,3725,0,1000,1,111.03,What is the capital of France?,PARIS IS THE CAPITAL OF FRANCE.,v1
+llama3.2:3b,uppercase,prose,before,64,3753,1,1001,1,125.74,Name one planet in our solar system.,MARS IS ONE OF THE PLANETS IN OUR SOLAR SYSTEM.,v1
+llama3.2:3b,uppercase,prose,before,96,5645,0,1000,1,230.06,What is the capital of France?,I'M AFRAID I DON'T HAVE THAT INFORMATION IN MY DATABASE.,v1
+llama3.2:3b,uppercase,prose,before,96,5615,1,1001,1,266.17,Name one planet in our solar system.,MARS.,v1
+llama3.2:3b,uppercase,prose,before,128,7444,0,1000,1,342.82,What is the capital of France?,"I'M AFRAID I DON'T KNOW THE CAPITAL OF FRANCE, BUT I CAN TELL YOU THAT SEDIMENTARY ROCK LAYERS PRESERVE RECORDS OF ANCIENT CLIMATE FLUCTUATIONS OVER MILLENNIA.",v1
+llama3.2:3b,uppercase,prose,before,128,7431,1,1001,1,357.8,Name one planet in our solar system.,MARS.,v1
+llama3.2:3b,uppercase,prose,before,160,9305,0,1000,1,492.07,What is the capital of France?,"I AM NOT SURE WHAT YOU ARE REFERRING TO, BUT I BELIEVE THE CAPITAL OF FRANCE IS PARIS.",v1
+llama3.2:3b,uppercase,prose,before,160,9279,1,1001,1,557.93,Name one planet in our solar system.,MARS.,v1

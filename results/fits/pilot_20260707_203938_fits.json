@@ -1,0 +1,222 @@
+{
+  "cells": [
+    {
+      "model": "llama3.2:3b",
+      "constraint": "end_token",
+      "padding_condition": "prose",
+      "constraint_position": "before",
+      "n_total_rows": 12,
+      "n_excluded_errors": 0,
+      "underpowered_levels": [
+        0,
+        4,
+        16,
+        32
+      ],
+      "truncation_suspected": false,
+      "raw_points": [
+        {
+          "padding_level": 0,
+          "prompt_tokens": 55.333333333333336,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 4,
+          "prompt_tokens": 286.3333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 16,
+          "prompt_tokens": 975.6666666666666,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 32,
+          "prompt_tokens": 1898.6666666666667,
+          "n": 3,
+          "success_rate": 1.0
+        }
+      ],
+      "status": "no_variation",
+      "t50": null
+    },
+    {
+      "model": "llama3.2:3b",
+      "constraint": "json_schema",
+      "padding_condition": "prose",
+      "constraint_position": "before",
+      "n_total_rows": 12,
+      "n_excluded_errors": 0,
+      "underpowered_levels": [
+        0,
+        4,
+        16,
+        32
+      ],
+      "truncation_suspected": false,
+      "raw_points": [
+        {
+          "padding_level": 0,
+          "prompt_tokens": 80.33333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 4,
+          "prompt_tokens": 311.3333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 16,
+          "prompt_tokens": 1000.6666666666666,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 32,
+          "prompt_tokens": 1923.6666666666667,
+          "n": 3,
+          "success_rate": 1.0
+        }
+      ],
+      "status": "no_variation",
+      "t50": null
+    },
+    {
+      "model": "llama3.2:3b",
+      "constraint": "negative_the",
+      "padding_condition": "prose",
+      "constraint_position": "before",
+      "n_total_rows": 12,
+      "n_excluded_errors": 0,
+      "underpowered_levels": [
+        0,
+        4,
+        16,
+        32
+      ],
+      "truncation_suspected": false,
+      "raw_points": [
+        {
+          "padding_level": 0,
+          "prompt_tokens": 55.333333333333336,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 4,
+          "prompt_tokens": 286.3333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 16,
+          "prompt_tokens": 975.6666666666666,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 32,
+          "prompt_tokens": 1898.6666666666667,
+          "n": 3,
+          "success_rate": 1.0
+        }
+      ],
+      "status": "no_variation",
+      "t50": null
+    },
+    {
+      "model": "llama3.2:3b",
+      "constraint": "prefix_persona",
+      "padding_condition": "prose",
+      "constraint_position": "before",
+      "n_total_rows": 12,
+      "n_excluded_errors": 0,
+      "underpowered_levels": [
+        0,
+        4,
+        16,
+        32
+      ],
+      "truncation_suspected": false,
+      "raw_points": [
+        {
+          "padding_level": 0,
+          "prompt_tokens": 63.333333333333336,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 4,
+          "prompt_tokens": 294.3333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 16,
+          "prompt_tokens": 983.6666666666666,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 32,
+          "prompt_tokens": 1906.6666666666667,
+          "n": 3,
+          "success_rate": 1.0
+        }
+      ],
+      "status": "no_variation",
+      "t50": null
+    },
+    {
+      "model": "llama3.2:3b",
+      "constraint": "uppercase",
+      "padding_condition": "prose",
+      "constraint_position": "before",
+      "n_total_rows": 12,
+      "n_excluded_errors": 0,
+      "underpowered_levels": [
+        0,
+        4,
+        16,
+        32
+      ],
+      "truncation_suspected": false,
+      "raw_points": [
+        {
+          "padding_level": 0,
+          "prompt_tokens": 54.333333333333336,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 4,
+          "prompt_tokens": 285.3333333333333,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 16,
+          "prompt_tokens": 974.6666666666666,
+          "n": 3,
+          "success_rate": 1.0
+        },
+        {
+          "padding_level": 32,
+          "prompt_tokens": 1897.6666666666667,
+          "n": 3,
+          "success_rate": 1.0
+        }
+      ],
+      "status": "no_variation",
+      "t50": null
+    }
+  ],
+  "source_files": [
+    "data/raw/pilot_20260707_203938.csv"
+  ]
+}

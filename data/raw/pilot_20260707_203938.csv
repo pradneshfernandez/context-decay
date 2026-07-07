@@ -1,0 +1,61 @@
+model,constraint,padding_condition,constraint_position,padding_level,prompt_tokens,trial,seed,success,time_taken,query,output_snippet,experiment_version
+llama3.2:3b,uppercase,prose,before,0,54,0,1000,1,5.03,What is the capital of France?,THE CAPITAL OF FRANCE IS PARIS!,v1
+llama3.2:3b,uppercase,prose,before,0,55,1,1001,1,1.46,Name one planet in our solar system.,MARS IS A PLANET IN OUR SOLAR SYSTEM!,v1
+llama3.2:3b,uppercase,prose,before,0,54,2,1002,1,4.0,What color is a ripe banana?,"A RIPE BANANA USUALLY HAS A YELLOW COLOR, BUT IT CAN ALSO BE GREEN OR SPOTTY WITH BROWN SPOTS DEPENDING ON THE RIPENESS AND TYPE OF BANANA.",v1
+llama3.2:3b,uppercase,prose,before,4,287,0,1000,1,6.08,What is the capital of France?,PARIS IS THE CAPITAL OF FRANCE.,v1
+llama3.2:3b,uppercase,prose,before,4,287,1,1001,1,6.62,Name one planet in our solar system.,MARS IS A PLANET IN OUR SOLAR SYSTEM.,v1
+llama3.2:3b,uppercase,prose,before,4,282,2,1002,1,7.16,What color is a ripe banana?,THERE IS NO MENTION OF BANANA COLOR IN THE PROVIDED TEXT.,v1
+llama3.2:3b,uppercase,prose,before,16,973,0,1000,1,26.48,What is the capital of France?,PARIS IS THE CAPITAL OF FRANCE.,v1
+llama3.2:3b,uppercase,prose,before,16,973,1,1001,1,26.25,Name one planet in our solar system.,MARS IS A PLANET IN OUR SOLAR SYSTEM.,v1
+llama3.2:3b,uppercase,prose,before,16,978,2,1002,1,32.68,What color is a ripe banana?,"THERE IS NO MENTION OF BANANA COLOR IN THE PROVIDED TEXT. THE TOPIC DISCUSSED INCLUDES AQUEDUCTS, VOLCANIC BASALT COLUMNS, ARCTIC TERN MIGRATION PATTERNS, MEDIEVAL TRADE ROUTES, AND PHOTOSYNTHESIS IN ",v1
+llama3.2:3b,uppercase,prose,before,32,1893,0,1000,1,53.67,What is the capital of France?,PARIS IS THE CAPITAL OF FRANCE.,v1
+llama3.2:3b,uppercase,prose,before,32,1892,1,1001,1,58.48,Name one planet in our solar system.,MARS IS THE PLANET IN OUR SOLAR SYSTEM THAT IS KNOWN FOR ITS RED COLOR AND HAS THE THINEST ATMOSPHERE AMONG ALL THE PLANETS.,v1
+llama3.2:3b,uppercase,prose,before,32,1908,2,1002,1,71.31,What color is a ripe banana?,"THERE IS NO MENTION OF BANANA COLOR IN THE PROVIDED TEXT. THE DISCUSSION FOCUSES ON VARIOUS TOPICS SUCH AS CLIMATE FLUCTUATIONS, ARCTIC TERN MIGRATION PATTERNS, AQUEDUCT CONSTRUCTION, AND PHOTOSYNTHES",v1
+llama3.2:3b,negative_the,prose,before,0,55,0,1000,1,2.09,What is the capital of France?,Paris is capital of France.,v1
+llama3.2:3b,negative_the,prose,before,0,56,1,1001,1,1.14,Name one planet in our solar system.,Mars,v1
+llama3.2:3b,negative_the,prose,before,0,55,2,1002,1,4.02,What color is a ripe banana?,"Ripe banana typically has yellow skin, although some varieties may have green or reddish tint. Yellow coloration indicates high sugar content and ripeness.",v1
+llama3.2:3b,negative_the,prose,before,4,288,0,1000,1,8.4,What is the capital of France?,"Paris, capital of France, is located in western part of country.",v1
+llama3.2:3b,negative_the,prose,before,4,288,1,1001,1,7.28,Name one planet in our solar system.,Mercury,v1
+llama3.2:3b,negative_the,prose,before,4,283,2,1002,1,13.51,What color is a ripe banana?,"Yellow, but not necessarily due to pigment absorption like accessory pigments in algae. Coloration in fruit often results from combination of chlorophyll breakdown, enzymatic reactions, and ripening p",v1
+llama3.2:3b,negative_the,prose,before,16,974,0,1000,1,41.31,What is the capital of France?,"Paris, capital city of France, is located in northern part of country. It has rich history dating back centuries, with many famous landmarks such as Eiffel Tower and Notre-Dame Cathedral. Paris is kno",v1
+llama3.2:3b,negative_the,prose,before,16,974,1,1001,1,33.75,Name one planet in our solar system.,"Mercury is a rocky planet with extremely high surface temperatures during day, but drops to -170 degrees Celsius at night due to its proximity to sun and lack of atmosphere.",v1
+llama3.2:3b,negative_the,prose,before,16,979,2,1002,1,31.22,What color is a ripe banana?,"Yellow, brown, or green, depending on stage ripeness.",v1
+llama3.2:3b,negative_the,prose,before,32,1894,0,1000,1,59.04,What is the capital of France?,Paris,v1
+llama3.2:3b,negative_the,prose,before,32,1893,1,1001,1,64.3,Name one planet in our solar system.,Mars is a planet in our solar system.,v1
+llama3.2:3b,negative_the,prose,before,32,1909,2,1002,1,80.34,What color is a ripe banana?,There is no mention of bananas in provided text.,v1
+llama3.2:3b,json_schema,prose,before,0,80,0,1000,1,5.41,What is the capital of France?,"{""answer"": ""Paris"", ""confidence"": 1}",v1
+llama3.2:3b,json_schema,prose,before,0,81,1,1001,1,3.64,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.9}",v1
+llama3.2:3b,json_schema,prose,before,0,80,2,1002,1,3.53,What color is a ripe banana?,"{""answer"": ""Yellow"", ""confidence"": 0.9}",v1
+llama3.2:3b,json_schema,prose,before,4,313,0,1000,1,14.54,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,4,313,1,1001,1,15.45,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,4,308,2,1002,1,13.37,What color is a ripe banana?,"{""answer"": ""Yellow"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,16,999,0,1000,1,40.83,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,16,999,1,1001,1,42.23,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,16,1004,2,1002,1,41.91,What color is a ripe banana?,"{""answer"": ""Yellow"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,32,1919,0,1000,1,83.97,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,32,1918,1,1001,1,80.44,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,32,1934,2,1002,1,87.41,What color is a ripe banana?,"{""answer"": ""Yellow"", ""confidence"": 0}",v1
+llama3.2:3b,prefix_persona,prose,before,0,63,0,1000,1,7.38,What is the capital of France?,"[AGENT-7]: Paris, of course. The City of Light and a hub for global espionage. I've had my fair share of high-stakes missions there.",v1
+llama3.2:3b,prefix_persona,prose,before,0,64,1,1001,1,1.81,Name one planet in our solar system.,[AGENT-7]: Mars,v1
+llama3.2:3b,prefix_persona,prose,before,0,63,2,1002,1,11.55,What color is a ripe banana?,"[AGENT-7]: Ah, a simple question, but one that requires attention to detail. A ripe banana typically exhibits a yellow skin, although some varieties may have a slight green tint or a reddish-pink hue.",v1
+llama3.2:3b,prefix_persona,prose,before,4,296,0,1000,1,18.79,What is the capital of France?,"[AGENT-7]: I'm afraid that's not a question related to my area of expertise, but I can provide you with information on various topics. However, if you're looking for general knowledge or trivia, I'd b",v1
+llama3.2:3b,prefix_persona,prose,before,4,296,1,1001,1,11.51,Name one planet in our solar system.,[AGENT-7]: Earth,v1
+llama3.2:3b,prefix_persona,prose,before,4,291,2,1002,1,20.86,What color is a ripe banana?,"[AGENT-7]: I'm afraid that's not relevant to my current mission parameters, but I can provide you with information on bananas. Bananas are typically yellow when they're ripe. However, it's worth notin",v1
+llama3.2:3b,prefix_persona,prose,before,16,982,0,1000,1,45.21,What is the capital of France?,"[AGENT-7]: Paris, the City of Light, serves as the capital and most populous city of France, a country renowned for its rich history, art, fashion, and cuisine.",v1
+llama3.2:3b,prefix_persona,prose,before,16,982,1,1001,1,38.15,Name one planet in our solar system.,"[AGENT-7]: Mercury is a planet in our solar system, known for its proximity to the sun and extreme temperature fluctuations between day and night.",v1
+llama3.2:3b,prefix_persona,prose,before,16,987,2,1002,1,49.89,What color is a ripe banana?,"[AGENT-7]: I'm afraid that's not relevant to my current mission parameters, but I can tell you that bananas are typically yellow when they're ripe. However, I must emphasize that this information is n",v1
+llama3.2:3b,prefix_persona,prose,before,32,1902,0,1000,1,98.79,What is the capital of France?,"[AGENT-7]: Paris, the capital of France, has been a hub of politics, culture, and history for centuries, with its iconic landmarks like the Eiffel Tower and Notre-Dame Cathedral.",v1
+llama3.2:3b,prefix_persona,prose,before,32,1901,1,1001,1,94.15,Name one planet in our solar system.,[AGENT-7]: Earth,v1
+llama3.2:3b,prefix_persona,prose,before,32,1917,2,1002,1,106.05,What color is a ripe banana?,"[AGENT-7]: There is no information provided about the color of a ripe banana in the given text, as it appears to be focused on various scientific and historical topics unrelated to fruit colors.",v1
+llama3.2:3b,end_token,prose,before,0,55,0,1000,1,4.0,What is the capital of France?,The capital of France is Paris. ##END##,v1
+llama3.2:3b,end_token,prose,before,0,56,1,1001,1,3.26,Name one planet in our solar system.,Mars is a planet in our solar system. ##END##,v1
+llama3.2:3b,end_token,prose,before,0,55,2,1002,1,7.82,What color is a ripe banana?,"A ripe banana typically turns from its original green or yellowish-green color to a more yellow or golden color, depending on the variety. The exact shade can vary, but it's usually a bright, sunny ye",v1
+llama3.2:3b,end_token,prose,before,4,288,0,1000,1,13.93,What is the capital of France?,The capital of France is Paris. ##END##,v1
+llama3.2:3b,end_token,prose,before,4,288,1,1001,1,11.58,Name one planet in our solar system.,Earth ##END##,v1
+llama3.2:3b,end_token,prose,before,4,283,2,1002,1,18.69,What color is a ripe banana?,"There is no information provided about bananas in the text, so it's not possible to determine their color based on the given context. The text only discusses various scientific topics such as cartogra",v1
+llama3.2:3b,end_token,prose,before,16,974,0,1000,1,38.57,What is the capital of France?,The capital of France is Paris. ##END##,v1
+llama3.2:3b,end_token,prose,before,16,974,1,1001,1,44.85,Name one planet in our solar system.,Earth ##END##,v1
+llama3.2:3b,end_token,prose,before,16,979,2,1002,1,55.85,What color is a ripe banana?,"There is no mention of bananas or their color in the provided text. The conversation was about various scientific and historical topics, including aqueducts, volcanic basalt columns, Arctic tern migra",v1
+llama3.2:3b,end_token,prose,before,32,1894,0,1000,1,100.42,What is the capital of France?,The capital of France is Paris. ##END##,v1
+llama3.2:3b,end_token,prose,before,32,1893,1,1001,1,96.15,Name one planet in our solar system.,Earth ##END##,v1
+llama3.2:3b,end_token,prose,before,32,1909,2,1002,1,116.47,What color is a ripe banana?,"There is no information provided about the color of a ripe banana in the given text. The text only discusses various scientific topics such as sedimentary rock layers, Arctic tern migration patterns, ",v1

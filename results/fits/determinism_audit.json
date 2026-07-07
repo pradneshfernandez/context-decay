@@ -1,0 +1,73 @@
+{
+  "experiment_version": "v1",
+  "model": "llama3.2:3b",
+  "seed": 1000,
+  "timestamp": "2026-07-07T20:12:56",
+  "runs": [
+    {
+      "num_thread": null,
+      "n": 5,
+      "outputs_identical": true,
+      "prompt_tokens_stable": true,
+      "distinct_outputs": 1,
+      "outputs": [
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!"
+      ],
+      "prompt_tokens": [
+        54,
+        54,
+        54,
+        54,
+        54
+      ]
+    },
+    {
+      "num_thread": 4,
+      "n": 5,
+      "outputs_identical": true,
+      "prompt_tokens_stable": true,
+      "distinct_outputs": 1,
+      "outputs": [
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!"
+      ],
+      "prompt_tokens": [
+        54,
+        54,
+        54,
+        54,
+        54
+      ]
+    },
+    {
+      "num_thread": 8,
+      "n": 5,
+      "outputs_identical": true,
+      "prompt_tokens_stable": true,
+      "distinct_outputs": 1,
+      "outputs": [
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!",
+        "THE CAPITAL OF FRANCE IS PARIS!"
+      ],
+      "prompt_tokens": [
+        54,
+        54,
+        54,
+        54,
+        54
+      ]
+    }
+  ],
+  "cross_num_thread_identical": true,
+  "overall_pass": true
+}

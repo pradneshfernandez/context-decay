@@ -1,0 +1,11 @@
+model,constraint,padding_condition,constraint_position,padding_level,prompt_tokens,trial,seed,success,time_taken,query,output_snippet,experiment_version
+llama3.2:3b,json_schema,prose,before,32,1919,0,1000,1,55.77,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,32,1918,1,1001,1,63.5,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,64,3751,0,1000,1,153.69,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,64,3779,1,1001,1,157.85,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.8}",v1
+llama3.2:3b,json_schema,prose,before,96,5671,0,1000,1,282.3,What is the capital of France?,"{""answer"": ""None"", ""confidence"": 0}",v1
+llama3.2:3b,json_schema,prose,before,96,5641,1,1001,1,278.85,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.9}",v1
+llama3.2:3b,json_schema,prose,before,128,7470,0,1000,1,400.5,What is the capital of France?,"{""answer"": ""Paris"", ""confidence"": 0.99}",v1
+llama3.2:3b,json_schema,prose,before,128,7457,1,1001,1,402.96,Name one planet in our solar system.,"{""answer"": ""Earth"", ""confidence"": 0.9}",v1
+llama3.2:3b,json_schema,prose,before,160,9331,0,1000,1,580.58,What is the capital of France?,"{""answer"": ""Paris"", ""confidence"": 0.99}",v1
+llama3.2:3b,json_schema,prose,before,160,-1,1,1001,-1,-1,Name one planet in our solar system.,"ERROR: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=600)",v1
