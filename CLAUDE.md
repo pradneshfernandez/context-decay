@@ -18,6 +18,7 @@ Architecture details: @docs/claude/architecture.md
 Experiment design rationale: @docs/methodology.md
 Research agenda (all studies): @docs/research_agenda.md
 Known pitfalls — check before any task: @docs/watchouts.md
+Session handoff / current status — check first when resuming work: @docs/claude/handoff.md
 
 ## Environment
 

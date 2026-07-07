@@ -22,3 +22,5 @@ See also, referenced from the root `CLAUDE.md`:
 - `docs/research_agenda.md` — full study roadmap
 - `docs/watchouts.md` — known pitfalls, checked before any task
 - `docs/changelog.md` — experiment version history
+- `docs/claude/handoff.md` — point-in-time status snapshot for resuming
+  work in a fresh session; check this first when picking work back up
