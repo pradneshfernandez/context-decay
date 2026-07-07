@@ -15,7 +15,7 @@ A system-prompt constraint (e.g. "reply only in uppercase") is separated
 from the user query by a variable amount of padding text, and we measure
 the token count at which the model stops reliably following the constraint
 (the "cliff"). See `docs/methodology.md` for the experiment design and
-`docs/architecture.md` for the data flow.
+`docs/claude/architecture.md` for the data flow.
 
 ```
 Runner (experiments/constraint_decay_toolkit.py)
@@ -42,8 +42,8 @@ Paper (paper/draft.md) cites only values present in results/fits/.
 - `data/processed/` — cleaned/aggregated datasets derived from raw
 - `results/figures/` — generated plots (PNG + SVG, regenerable)
 - `results/fits/` — fitted model parameters (JSON)
-- `docs/` — architecture, methodology, research agenda, known pitfalls,
-  changelog
+- `docs/` — methodology, research agenda, known pitfalls, changelog
+  (`docs/claude/` — architecture notes and repo/document index)
 
 ## Setup
 
@@ -83,15 +83,6 @@ python analysis/plot_curves.py results/fits/
 # Lint
 ruff check . && ruff format --check .
 ```
-
-## Contributing / working in this repo
-
-This repo is developed with Claude Code; see `CLAUDE.md` for the operating
-rules (data integrity, versioning, statistics conventions) and the nested
-`CLAUDE.md` files in `experiments/`, `analysis/`, and `paper/` for
-directory-specific conventions. `docs/watchouts.md` lists every known
-experimental pitfall — read it before touching validators, padding, or
-analysis code.
 
 ## Citing
 

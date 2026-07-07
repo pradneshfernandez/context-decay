@@ -14,7 +14,7 @@ comparison via Ollama, targeting a short research paper / technical blog post.
 - `results/figures/` — generated plots (PNG + SVG, regenerable)
 - `results/fits/` — fitted model parameters (JSON)
 
-Architecture details: @docs/architecture.md
+Architecture details: @docs/claude/architecture.md
 Experiment design rationale: @docs/methodology.md
 Research agenda (all studies): @docs/research_agenda.md
 Known pitfalls — check before any task: @docs/watchouts.md
