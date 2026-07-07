@@ -34,8 +34,14 @@ Loads when working on files in `experiments/`. Root rules still apply.
 - Read the real prompt token count from `prompt_eval_count` in the response;
   never estimate tokens with word counts or tiktoken.
 - Default `options`: `{"temperature": 0.0, "seed": <trial seed>, "num_ctx": 4096}`.
-  If padding levels grow, raise `num_ctx` and re-verify no truncation by
-  checking `prompt_tokens` grows linearly with `padding_level`.
+  `num_ctx` is configurable via `--num-ctx` (default 4096) — raise it before
+  testing padding levels whose prompts could approach the default, and
+  re-verify no truncation by checking `prompt_tokens` grows linearly with
+  `padding_level`.
+- `--constraints NAME [NAME ...]` runs a subset of the `CONSTRAINTS` registry
+  by name. For exploratory probes (e.g. finding a rough cliff location
+  before locking the main grid) only — the locked main grid run should use
+  the full constraint set.
 - Timeouts: 600s per call minimum (12B on CPU is slow). Retry once on
   connection errors, then record as error row.
 

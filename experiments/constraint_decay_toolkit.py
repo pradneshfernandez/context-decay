@@ -181,9 +181,9 @@ QUERIES = [
 # ----------------------------------------------------------------------
 
 def run_ollama(model: str, system: str, user: str, seed: int, timeout: int = 600,
-                num_thread: int | None = None):
+                num_thread: int | None = None, num_ctx: int = 4096):
     """Single non-streaming chat call. Returns (output, prompt_tokens, seconds)."""
-    options = {"temperature": 0.0, "seed": seed, "num_ctx": 4096}
+    options = {"temperature": 0.0, "seed": seed, "num_ctx": num_ctx}
     if num_thread is not None:
         options["num_thread"] = num_thread
     payload = {
@@ -208,14 +208,16 @@ def run_ollama(model: str, system: str, user: str, seed: int, timeout: int = 600
 # 5. EXPERIMENT GRID
 # ----------------------------------------------------------------------
 
-def run_experiment(models, trials, padding_levels, conditions, position, out_path):
+def run_experiment(models, trials, padding_levels, conditions, position, out_path,
+                    num_ctx=4096, constraints=None):
     fieldnames = [
         "model", "constraint", "padding_condition", "constraint_position",
         "padding_level", "prompt_tokens", "trial", "seed",
         "success", "time_taken", "query", "output_snippet",
         "experiment_version",
     ]
-    grid = list(itertools.product(models, CONSTRAINTS, conditions, padding_levels))
+    active_constraints = constraints if constraints is not None else CONSTRAINTS
+    grid = list(itertools.product(models, active_constraints, conditions, padding_levels))
     total = len(grid) * trials
     done = 0
 
@@ -241,7 +243,8 @@ def run_experiment(models, trials, padding_levels, conditions, position, out_pat
                            constraint.instruction + "\n\n" + query
 
                 try:
-                    output, ptok, elapsed = run_ollama(model, system, user, seed)
+                    output, ptok, elapsed = run_ollama(model, system, user, seed,
+                                                         num_ctx=num_ctx)
                     success = int(constraint.validator(output))
                 except Exception as e:
                     output, ptok, elapsed, success = f"ERROR: {e}", -1, -1, -1
@@ -281,6 +284,18 @@ if __name__ == "__main__":
                     help="'before' = constraint separated from query (treatment); "
                          "'after' = constraint adjacent to query (control)")
     ap.add_argument("--out", default="results.csv")
+    ap.add_argument("--num-ctx", type=int, default=4096,
+                    help="Ollama context window. Raise this if the highest "
+                         "padding level's prompt could approach the default; "
+                         "silent front-truncation fabricates a fake cliff.")
+    ap.add_argument("--constraints", nargs="+",
+                    choices=[c.name for c in CONSTRAINTS], default=None,
+                    help="subset of constraints to run (default: all). For "
+                         "exploratory probes only -- the locked main grid "
+                         "should run the full set.")
     args = ap.parse_args()
+    selected = ([c for c in CONSTRAINTS if c.name in args.constraints]
+                if args.constraints else None)
     run_experiment(args.models, args.trials, args.levels,
-                   args.conditions, args.position, args.out)
+                   args.conditions, args.position, args.out,
+                   num_ctx=args.num_ctx, constraints=selected)
