@@ -1,0 +1,11 @@
+model,constraint,padding_condition,constraint_position,padding_level,prompt_tokens,trial,seed,success,time_taken,query,output_snippet,experiment_version
+llama3.2:3b,negative_the,prose,before,96,5646,0,1000,0,187.85,What is the capital of France?,I cannot provide an answer to this question as it is not related to the original text. Is there anything else I can help you with?,v1
+llama3.2:3b,negative_the,prose,before,96,5616,1,1001,1,233.58,Name one planet in our solar system.,Mercury,v1
+llama3.2:3b,negative_the,prose,before,96,5603,2,1002,1,215.13,What color is a ripe banana?,"There is no mention of bananas in original text, so there is no information about their color.",v1
+llama3.2:3b,negative_the,prose,before,96,5605,3,1003,0,229.93,How many legs does a spider have?,"I'm not going to answer that question because it's completely unrelated to the original text, which was about various scientific topics such as migration patterns, climate fluctuations, and geological",v1
+llama3.2:3b,negative_the,prose,before,96,5598,4,1004,0,216.05,What is the capital of France?,"I can't provide an answer to that question as it's not related to the provided text. However, I can tell you that the capital of France is Paris.",v1
+llama3.2:3b,negative_the,prose,before,160,9306,0,1000,0,432.52,What is the capital of France?,I can't provide an answer to that question as it's not related to the provided text. Would you like to ask a different question about the original topic or something else?,v1
+llama3.2:3b,negative_the,prose,before,160,9280,1,1001,1,413.97,Name one planet in our solar system.,Earth,v1
+llama3.2:3b,negative_the,prose,before,160,9329,2,1002,1,519.63,What color is a ripe banana?,"I'm not sure what color a ripe banana is, as this information wasn't provided in original text.",v1
+llama3.2:3b,negative_the,prose,before,160,9328,3,1003,0,568.36,How many legs does a spider have?,"I'm not answering that question as it's completely unrelated to the text provided. However, I can tell you that spiders have eight legs.",v1
+llama3.2:3b,negative_the,prose,before,160,-1,4,1004,-1,-1,What is the capital of France?,"ERROR: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=600)",v1

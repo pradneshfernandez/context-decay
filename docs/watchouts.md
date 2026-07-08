@@ -36,6 +36,19 @@ proceeding — do not silently work around it.
 - **JSON validator leniency is a documented choice.** Markdown fences are
   tolerated so we measure JSON-ness, not fence discipline. If tightened,
   it's a new experiment version — old results not comparable.
+- **Refusal-boilerplate collision (observed 2026-07-08, `negative_the` +
+  `prose`, levels 96/160, both `llama3.2:3b` and `llama3.2:1b`).** At high
+  padding levels the model can mis-frame the task as reading-comprehension
+  ("this question is not related to the provided text") and refuse to
+  answer, instead of forgetting the constraint while answering normally.
+  For `negative_the` specifically, the refusal boilerplate itself often
+  contains "the" ("not related to **the** provided text"), which is what
+  trips the validator — not word-choice decay in a genuine answer. When
+  the refusal phrasing happens to avoid "the", it passes despite still
+  being a refusal. Treat "constraint violated" and "task misframed" as
+  two different underlying phenomena when writing up results from this
+  cell: check `output_snippet` for refusal language, don't assume every
+  `success=0` row is the model losing track of the rule mid-answer.
 
 ## Reproducibility & data integrity
 

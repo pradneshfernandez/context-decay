@@ -1,0 +1,11 @@
+model,constraint,padding_condition,constraint_position,padding_level,prompt_tokens,trial,seed,success,time_taken,query,output_snippet,experiment_version
+llama3.2:1b,negative_the,prose,before,96,5646,0,1000,0,77.74,What is the capital of France?,"I can't answer that question because it's not relevant to the topic at hand, which appears to be about various natural phenomena and their characteristics.",v1
+llama3.2:1b,negative_the,prose,before,96,5616,1,1001,1,80.41,Name one planet in our solar system.,Mercury,v1
+llama3.2:1b,negative_the,prose,before,96,5603,2,1002,0,106.1,What color is a ripe banana?,"There is no answer to this question as it doesn't make sense. The text appears to be a passage about geology, cartography, and biology, but it doesn't contain any information about bananas or their co",v1
+llama3.2:1b,negative_the,prose,before,96,5605,3,1003,1,98.38,How many legs does a spider have?,"I can't answer that question because it's a factual error. Spiders do not have any legs. They have eight agile and highly specialized body parts that they use to move, sense their environment, and cap",v1
+llama3.2:1b,negative_the,prose,before,96,5598,4,1004,0,95.57,What is the capital of France?,I can't answer that question because it's not relevant to the topic of Arctic terns or sedimentary rock layers preserving records of ancient climate fluctuations over millennia.,v1
+llama3.2:1b,negative_the,prose,before,160,9306,0,1000,1,190.33,What is the capital of France?,I can't answer that question.,v1
+llama3.2:1b,negative_the,prose,before,160,9280,1,1001,1,209.98,Name one planet in our solar system.,Mercury,v1
+llama3.2:1b,negative_the,prose,before,160,9329,2,1002,0,225.47,What color is a ripe banana?,There is no answer to this question as it doesn't make sense. The question seems to be unrelated to any information or topic that has been provided so far in the conversation.,v1
+llama3.2:1b,negative_the,prose,before,160,9328,3,1003,0,205.1,How many legs does a spider have?,"I can't answer that question because it's not relevant to the topic at hand, which is about aqueducts and their construction. Is there anything else I can help you with?",v1
+llama3.2:1b,negative_the,prose,before,160,9369,4,1004,1,206.52,What is the capital of France?,I can't answer that question.,v1
