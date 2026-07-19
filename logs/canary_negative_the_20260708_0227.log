@@ -1,0 +1,11 @@
+EXPERIMENT_VERSION=v1
+[1/10] llama3.2:3b | negative_the | prose | level=96 | tokens=5646 | pass=0 | 187.9s
+[2/10] llama3.2:3b | negative_the | prose | level=96 | tokens=5616 | pass=1 | 233.6s
+[3/10] llama3.2:3b | negative_the | prose | level=96 | tokens=5603 | pass=1 | 215.1s
+[4/10] llama3.2:3b | negative_the | prose | level=96 | tokens=5605 | pass=0 | 229.9s
+[5/10] llama3.2:3b | negative_the | prose | level=96 | tokens=5598 | pass=0 | 216.1s
+[6/10] llama3.2:3b | negative_the | prose | level=160 | tokens=9306 | pass=0 | 432.5s
+[7/10] llama3.2:3b | negative_the | prose | level=160 | tokens=9280 | pass=1 | 414.0s
+[8/10] llama3.2:3b | negative_the | prose | level=160 | tokens=9329 | pass=1 | 519.6s
+[9/10] llama3.2:3b | negative_the | prose | level=160 | tokens=9328 | pass=0 | 568.4s
+[10/10] llama3.2:3b | negative_the | prose | level=160 | tokens=-1 | pass=-1 | -1.0s
