@@ -85,21 +85,24 @@ def bootstrap_t50(x_all: np.ndarray, y_all: np.ndarray,
     return t50s, params
 
 
-def build_raw_points(df: pd.DataFrame) -> list[dict]:
+def build_raw_points(df: pd.DataFrame, metric_col: str = "success") -> list[dict]:
     points = []
     for level, sub in df.groupby("padding_level"):
         points.append({
             "padding_level": int(level),
             "prompt_tokens": float(sub["prompt_tokens"].mean()),
             "n": int(len(sub)),
-            "success_rate": float(sub["success"].mean()),
+            "success_rate": float(sub[metric_col].mean()),
         })
     points.sort(key=lambda r: r["padding_level"])
     return points
 
 
-def fit_cell(group_df: pd.DataFrame, key: tuple) -> dict:
+def fit_cell(group_df: pd.DataFrame, key: tuple, metric_col: str = "success") -> dict:
     n_total = len(group_df)
+    # `success == -1` (runner error rows) are always excluded, even when
+    # fitting a different metric column (e.g. answer_correct uses the same
+    # -1 exclusion convention and is undefined on error rows).
     n_excluded = int((group_df["success"] == -1).sum())
     df = group_df[group_df["success"] != -1].copy()
 
@@ -114,11 +117,12 @@ def fit_cell(group_df: pd.DataFrame, key: tuple) -> dict:
         "constraint": key[1],
         "padding_condition": key[2],
         "constraint_position": key[3],
+        "metric": metric_col,
         "n_total_rows": n_total,
         "n_excluded_errors": n_excluded,
         "underpowered_levels": underpowered_levels,
         "truncation_suspected": truncated,
-        "raw_points": build_raw_points(df),
+        "raw_points": build_raw_points(df, metric_col),
     }
 
     if truncated:
@@ -126,13 +130,13 @@ def fit_cell(group_df: pd.DataFrame, key: tuple) -> dict:
         result["t50"] = None
         return result
 
-    if df.empty or df["success"].nunique() < 2:
+    if df.empty or df[metric_col].nunique() < 2:
         result["status"] = "no_variation"
         result["t50"] = None
         return result
 
     x = df["prompt_tokens"].to_numpy(dtype=float)
-    y = df["success"].to_numpy(dtype=float)
+    y = df[metric_col].to_numpy(dtype=float)
 
     try:
         intercept, slope = fit_logistic(x, y)
@@ -178,20 +182,27 @@ def main():
     ap.add_argument("csvs", nargs="+", help="raw experiment CSV(s)")
     ap.add_argument("--out", default=None,
                      help="output JSON path (default: "
-                          "results/fits/<first-csv-stem>_fits.json)")
+                          "results/fits/<first-csv-stem>_fits.json, or "
+                          "..._<metric>_fits.json for a non-default --metric)")
+    ap.add_argument("--metric", default="success",
+                     help="binary column to fit T50 against (default: "
+                          "success). E.g. answer_correct, from "
+                          "analysis/answer_correctness.py, to fit a "
+                          "factual-accuracy cliff instead of a "
+                          "constraint-compliance cliff.")
     args = ap.parse_args()
 
     paths = [Path(p) for p in args.csvs]
     df = load_runs(paths)
 
-    missing = REQUIRED_COLS - set(df.columns)
+    missing = (REQUIRED_COLS | {args.metric}) - set(df.columns)
     if missing:
         print(f"ERROR: input CSV missing required columns: {sorted(missing)}")
         sys.exit(1)
 
     cells = []
     for key, group in df.groupby(GROUP_COLS):
-        cell = fit_cell(group, key)
+        cell = fit_cell(group, key, args.metric)
         cells.append(cell)
         flags = []
         if cell["underpowered_levels"]:
@@ -202,8 +213,9 @@ def main():
         print(f"{key} -> {cell['status']} "
               f"T50={cell.get('t50_display', 'n/a')}{flag_str}")
 
-    out_path = (Path(args.out) if args.out
-                else Path("results/fits") / f"{paths[0].stem}_fits.json")
+    default_name = (f"{paths[0].stem}_fits.json" if args.metric == "success"
+                     else f"{paths[0].stem}_{args.metric}_fits.json")
+    out_path = Path(args.out) if args.out else Path("results/fits") / default_name
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(
         {"cells": cells, "source_files": [str(p) for p in paths]}, indent=2))
