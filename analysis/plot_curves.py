@@ -27,6 +27,9 @@ def load_cells(paths: list[Path]) -> list[dict]:
     cells = []
     for p in paths:
         data = json.loads(Path(p).read_text())
+        if "cells" not in data:
+            print(f"Skipping {p}: not a fit_cliffs.py output (no 'cells' key)")
+            continue
         cells.extend(data["cells"])
     return cells
 
@@ -36,7 +39,11 @@ def logistic(x: np.ndarray, intercept: float, slope: float) -> np.ndarray:
 
 
 def cell_label(cell: dict) -> str:
-    return (f"{cell['model']} | {cell['constraint']} | "
+    # Underscores in constraint names (e.g. "negative_the") trigger LaTeX
+    # subscripting under this machine's text.usetex matplotlibrc, so swap
+    # them for spaces rather than relying on escaping.
+    constraint = cell["constraint"].replace("_", " ")
+    return (f"{cell['model']} | {constraint} | "
             f"{cell['padding_condition']} | {cell['constraint_position']}")
 
 
@@ -64,6 +71,9 @@ def plot_cell(cell: dict, out_dir: Path) -> Path | None:
     ax.scatter(xs_raw, ys_raw, s=sizes, color=color, zorder=3,
                label="raw per-level success rate", edgecolor=edge_colors,
                linewidth=1.2)
+    if underpowered:
+        ax.scatter([], [], s=60, color=color, edgecolor="red", linewidth=1.2,
+                   label="underpowered (n<5, e.g. timeout exclusions)")
 
     if "intercept" in cell:
         x_min, x_max = min(xs_raw), max(xs_raw)
@@ -85,8 +95,9 @@ def plot_cell(cell: dict, out_dir: Path) -> Path | None:
             ax.text(cell["t50"], 1.03, f"T50={cell['t50']:.0f}",
                     ha="center", va="bottom", fontsize=8)
         elif cell["status"] in ("right_censored", "left_censored"):
-            ax.text(0.02, 0.02, cell.get("t50_display", cell["status"]),
-                    transform=ax.transAxes, fontsize=8, color="#555555")
+            ax.text(0.98, 0.02, cell.get("t50_display", cell["status"]),
+                    transform=ax.transAxes, fontsize=8, color="#555555",
+                    ha="right", va="bottom")
 
     ax.set_xlabel("Prompt tokens (actual, prompt_eval_count)")
     ax.set_ylabel("Success rate")

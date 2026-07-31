@@ -5,6 +5,16 @@ plotting script. One color per model, consistent across all figures.
 
 import zlib
 
+import matplotlib.pyplot as plt
+
+# Figures must render identically regardless of the machine's own
+# matplotlibrc (e.g. this machine has ~/.config/matplotlib/matplotlibrc
+# setting text.usetex: True, which silently breaks any label containing
+# %, <, >, or _ via LaTeX text-mode escaping rules). Pin this explicitly
+# rather than escaping special characters in every label.
+plt.rcParams["text.usetex"] = False
+plt.rcParams["font.family"] = "sans-serif"
+
 # Extend as new models are added to experiments. Do not reuse a hex across
 # two models that appear in the same figure set.
 KNOWN_MODEL_COLORS = {
