@@ -5,9 +5,11 @@ padding tokens separate a system constraint from the user query. Multi-model
 comparison run entirely on local hardware via [Ollama](https://ollama.com),
 targeting a short research paper / technical blog post.
 
-**Status:** early — the experiment runner and its test suite exist; no
-experiment data has been collected yet. See `docs/research_agenda.md` for
-the full study roadmap and sequencing.
+**Status:** Study 1 (constraint decay) in progress on `llama3.2:3b`. Pilot,
+prose-padding probes, and a full `distractor`-padding grid (5 constraints x
+6 padding levels x n=10) are done; see `docs/claude/handoff.md` for current
+results and next steps. `gemma3:12b` and `llama3.2:1b` have partial probe
+data. See `docs/research_agenda.md` for the full study roadmap.
 
 ## How it works
 

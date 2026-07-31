@@ -3,7 +3,7 @@
 Point-in-time status for resuming work in a fresh session. This is a
 snapshot, not a durable doc — update or delete stale sections as work
 progresses; don't let it silently rot into a false record. Last updated
-2026-07-08.
+2026-07-31.
 
 ## Environment (already set up on this machine)
 - Ollama installed via the official installer (systemd service, running as
@@ -96,34 +96,68 @@ worse — 1B does not obviously "crack" more than 3B on this probe.
 strong evidence of "no scale effect," just insufficient evidence of one.**
 Do not cite this as a scale-independence finding without more trials.
 
-### Step 3 — distractor grid: NOT STARTED, scope paused
-Budgeted before launching (per `docs/watchouts.md` "budget the grid"
-watchout): a full locked grid (5 constraints x 6 levels [0/32/64/96/128/
-160] x n=10 x both models) is ~25h of `llama3.2:3b` time and ~100h+ of
-`gemma3:12b` time at observed per-call timings — not launchable as one
-block. Four scoping options were presented to the user and not yet
-decided (paused mid-session, "later"):
-1. `llama3.2:3b` only, full levels, n=10 (~25h) — recommended; decide on
-   `gemma3:12b` afterward once cliff location is known, to avoid paying
-   12B's cost at levels that turn out to be pre- or post-cliff.
-2. Both models, fewer levels (0/64/128), n=10 (~12h on 3B, ~50h on 12B).
-3. Both models, full levels, n=5 (underpowered vs. methodology's >=10;
-   would need explicit flagging).
-4. User-specified custom grid.
+### Step 3 — distractor grid: DONE (option 1 scope), 2026-07-30
+Launched `llama3.2:3b` only, full levels (0/32/64/96/128/160), n=10,
+`distractor` padding, `before` position, `--num-ctx 12000`, via
+`nohup`/`disown` (~13h wall clock, finished clean, 300/300 trials).
+Output: `data/raw/distractor_grid_3b_20260729_2309.csv` +
+`logs/distractor_grid_3b_20260729_2309.log`.
 
-**Resume here**: ask the user to pick a distractor-grid scope, or default
-to option 1 if they just say "go."
+**Note**: an earlier attempt at this same grid
+(`data/raw/distractor_grid_3b_20260722_1912.csv`, 2026-07-22) died
+partway through — mtime evidence pointed to a machine reboot/power loss
+around trial 38/300, not an application bug. That file was uncommitted
+and was deleted rather than kept as scientific record (agreed with user).
+
+Result: `python analysis/fit_cliffs.py
+data/raw/distractor_grid_3b_20260729_2309.csv` ->
+`results/fits/distractor_grid_3b_20260729_2309_fits.json`, figures in
+`results/figures/`.
+- `negative_the`: real fitted cliff, T50 = 7988 tokens.
+- `uppercase`, `end_token`: right-censored (never dropped below 50% in
+  range tested, up to ~9290 tokens) — same formatting-survives-longer
+  pattern seen in the earlier prose probes, now confirmed under
+  `distractor` padding too.
+- `json_schema`: no_variation (100% pass throughout — well-formedness
+  never broke).
+- `prefix_persona`: right-censored but flagged **UNDERPOWERED** at
+  levels 128/160 — those cells took repeated hits from the runner's
+  hardcoded 600s read-timeout (`constraint_decay_toolkit.py:183`) as
+  per-call generation time grew with padding; some sub-cells recovered
+  to n>=7, but treat this constraint's top-level result cautiously
+  until/unless rerun with a longer timeout. New watchout candidate for
+  `docs/watchouts.md`, not yet written up: **timeout-driven right-
+  censoring at high `distractor` padding levels**, distinct from the
+  already-documented refusal-boilerplate collision.
+
+**Resume here**: decide whether to (a) accept the `prefix_persona`
+top-level cells as-is, (b) rerun just levels 128/160 for
+`prefix_persona` (and preemptively `end_token`) with a bumped timeout,
+or (c) move on to `gemma3:12b` on the same grid now that cliff location
+is roughly known (per the original option-1 rationale — 12B call times
+will be much longer, so decide before committing that CPU budget).
 
 ## Not yet started
-- Task: add `answer_correct` post-hoc check in the analysis layer (scan
-  `output_snippet` for the expected answer against the fixed `QUERIES`
-  list) to turn the uppercase/json_schema accuracy-vs-formatting
-  dissociation into a second measured curve. No runner/schema change
-  needed — analysis-layer only.
+- Decision on `prefix_persona` rerun (levels 128/160) and on launching
+  `gemma3:12b` over the same distractor grid (Study 1 -> Study 2 bridge).
 
-## Git
-Docs updated this session (this file + `docs/watchouts.md`); not yet
-committed. New raw CSVs from the canary + fragility-contrast probes
-(`data/raw/canary_negative_the_20260708_0227.csv`,
-`data/raw/canary_negative_the_1b_*.csv`) also uncommitted as of this
-writing.
+## Session close, 2026-07-31
+This session: launched and completed the `llama3.2:3b` distractor grid
+(Step 3 above), fitted + plotted it, and did a docs/tooling pass:
+- `docs/watchouts.md`: added the timeout-driven right-censoring watchout
+  (see Step 3 above for the finding it's based on).
+- `docs/changelog.md`: logged the `plot_curves.py`/`style.py` fixes below
+  under Tooling (no `EXPERIMENT_VERSION` bump — plotting only).
+- `analysis/plot_curves.py` + `analysis/style.py`: fixed a directory-glob
+  crash on non-fit JSON files, a legend/annotation overlap, and label
+  corruption from this machine's LaTeX-enabled matplotlibrc (pinned
+  `text.usetex = False` rather than escaping per-label). All figures in
+  `results/figures/` regenerated with these fixes — if you spot an old
+  copy of a figure elsewhere (e.g. pasted into a draft), regenerate it.
+- `README.md`: status section updated off the stale "no data yet" claim.
+- Committed: distractor-grid CSV + log, fit JSON, figures, and all doc
+  updates above (see `git log` from this session for exact commits).
+
+Nothing is running right now. Everything is committed. Resume at the
+"Not yet started" item above, or pick up Study 2 (quantization) per
+`docs/research_agenda.md`.

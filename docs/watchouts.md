@@ -50,6 +50,28 @@ proceeding — do not silently work around it.
   cell: check `output_snippet` for refusal language, don't assume every
   `success=0` row is the model losing track of the rule mid-answer.
 
+- **Timeout-driven right-censoring at high `distractor` padding levels**
+  (observed 2026-07-30, `llama3.2:3b`, `distractor` padding, `before`
+  position, levels 128/160). Per-call generation time grows with padding
+  level; at these levels calls started approaching and occasionally
+  exceeding the runner's hardcoded 600s read-timeout
+  (`experiments/constraint_decay_toolkit.py:183`), producing a burst of
+  `success=-1` exclusions (`prefix_persona`/level 160 saw 5 consecutive
+  timeouts before recovering). This is a *different* failure mode from
+  the refusal-boilerplate collision above: the model isn't misframing the
+  task, the wall-clock timeout is firing before generation finishes at
+  all. Left unaddressed, a cell that consistently exceeds 600s at a given
+  level would silently degrade to n=0 (unreportable) rather than a
+  measured rate, and — worse — would look like right-censoring
+  ("never dropped below 50%") when it may really be an artifact of which
+  trials happened to finish in time. Check per-cell exclusion counts
+  (`fit_cliffs.py`'s `underpowered_levels` flag) whenever the highest
+  padding levels are involved, and treat a spike in `-1` rows correlated
+  with level (not model behavior) as a timeout artifact, not a scientific
+  result. If it recurs, the fix is to raise the timeout (tooling change,
+  no `EXPERIMENT_VERSION` bump needed), not to reinterpret the timeouts
+  as decay.
+
 ## Reproducibility & data integrity
 
 - **`data/raw/` is immutable.** Never edit, overwrite, delete, or "clean
