@@ -123,8 +123,9 @@ data/raw/distractor_grid_3b_20260729_2309.csv` ->
 - `prefix_persona`: right-censored but flagged **UNDERPOWERED** at
   levels 128/160 — those cells took repeated hits from the runner's
   hardcoded 600s read-timeout (`constraint_decay_toolkit.py:183`) as
-  per-call generation time grew with padding; some sub-cells recovered
-  to n>=7, but treat this constraint's top-level result cautiously
+  per-call generation time grew with padding; only n=2 (L128) and n=4
+  (L160) valid trials remain (14/60 rows excluded, per the fit JSON), so
+  treat this constraint's top-level result cautiously
   until/unless rerun with a longer timeout. New watchout candidate for
   `docs/watchouts.md`, not yet written up: **timeout-driven right-
   censoring at high `distractor` padding levels**, distinct from the
